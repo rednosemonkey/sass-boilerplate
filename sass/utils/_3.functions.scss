@@ -1,8 +1,8 @@
 // px to em
-// width: em(10px);
 @function em($px, $base-font-size: 16px) {
    @return ($px / $base-font-size) * 1em;
 }
+// width: em(10px);
 
 
 // calc-percent: calculate the percent using the module-width & parent-width

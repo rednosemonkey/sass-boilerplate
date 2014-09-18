@@ -2,7 +2,9 @@
   box-sizing: border-box;
 }
 
-img, video {
+img, 
+picture,
+video {
   max-width: 100%;
   height: auto;
 }

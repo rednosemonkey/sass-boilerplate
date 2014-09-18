@@ -1,5 +1,4 @@
-
-# require 'sass-globbing'
+require 'sass-globbing'
 
 http_path = "/"
 css_dir = "."
