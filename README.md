@@ -14,7 +14,9 @@ No framework proprietory mixins. Vender prefixing handled by [autoprefixer](http
 
 I recommend Compass if you use sprites (and you should, if you want multi-coloured icons AND cross browser support). If you download [pngquant](http://pngquant.org/) and link to it from the compass config file, your automatically Compass compiled sprite map will be automatically compressed (lossy) by pngquant. 
 
-sass-globbing gem required to import a folder of individual files. Easily add or remove files in a folder without having to update @import.
+sass-globbing gem required to import a folder of individual files. Easily add or remove files in a folder without having to update @import. Unfortunately, currently sass globbing doesn't work on windows. There is a style-windows.scss file that has the complete file tree.
+
+On macs:
 
     $ gem install sass-globbing
 
