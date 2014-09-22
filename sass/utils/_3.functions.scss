@@ -1,22 +1,24 @@
 // px to em
 @function em($px, $base-font-size: 16px) {
-   @return ($px / $base-font-size) * 1em;
+	@return ($px / $base-font-size) * 1em;
 }
-// width: em(10px);
+/* 
+width: em(10px);
+-- Output --
+width: 0.625em;
+*/
 
-
-// calc-percent: calculate the percent using the module-width & parent-width
-
-/*=======================Use===========================
-.sidebar {
-  width:calc-percent(220px,960px);
-}
-========================Output=========================
-.sidebar {
-  width: 22.9166666667%;
-}
-=======================================================*/
-
-@function calc-percent( $module-width, $parent-width ) {
+// calculate the percent using the module-width & parent-width
+@function percent( $module-width, $parent-width ) {
 	@return $module-width / $parent-width * 100%;
 }
+/*
+.sidebar {
+	width:percent(220px,960px);
+}
+-- Output --
+.sidebar {
+	width: 22.9166666667%;
+}
+*/
+

@@ -1,12 +1,42 @@
+// set main media query breakpoints. 
+@mixin bp($break-point-name) {
+	@if ($MQs) {
+		$break-point-for-phone: "(max-width: 540px)";
+		$break-point-for-tablet: "(max-width: 768px)";
+		$break-point-for-notebook: "(max-width: 969px)";
+	
+		@if $break-point-name == phone {
+			@media screen and #{$break-point-for-phone} { @content; }
+		}
+		@else if $break-point-name == tablet {
+			@media screen and #{$break-point-for-tablet} { @content; }
+		}
+		@else if $break-point-name == notebook {
+			@media screen and #{$break-point-for-notebook} { @content; }
+		}
+	}
+}
+/* 
+-- use --
+Set MQs to true in main partial import file. Set false for compiling for browsers that don't support media queries. For example:
+MQs: true;
+@import "mixins";
+
+In sass:
+@include bp(phone){
+	
+}
+*/
+
 // center element when height and width known
 @mixin center($width, $height: $width) {
-  position: absolute;
-  width: $width; 
-  height: $height;
-  top: 50%;
-  left: 50%;
-  margin-top: $height / -2;
-  margin-left: $width / -2;
+	position: absolute;
+	width: $width; 
+	height: $height;
+	top: 50%;
+	left: 50%;
+	margin-top: $height / -2;
+	margin-left: $width / -2;
 }
 // to center square object, pass one parameter
 // @include center(200px);
@@ -14,15 +44,38 @@
 
 // center when element size not known. IE9+
 @mixin center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 // vertical align when element size not known. IE9+
 @mixin v-align {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+// text animation effects
+@mixin text-animation($name: fade-in-up, $duration: 1s, $delay: 1.2s) {
+	animation-name: $name;
+	animation-duration: $duration;
+	animation-delay: $delay;
+}
+
+// automate retina ready sprite
+@mixin retina-sprite($name, $logo-sprite, $logo-sprite2x) {
+	background-image: sprite-url($logo-sprite);
+	background-position: sprite-position($logo-sprite, $name);
+	background-repeat: no-repeat;
+	@media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx) {
+		& {
+			$position: sprite-position($logo-sprite2x, $name);
+			background-image: sprite-url($logo-sprite2x);
+			background-position: nth($position, 1) nth($position, 2) / 2;
+			// background-position: 50% nth($position, 2) / 2;
+			@include background-size(ceil(image-width(sprite-path($logo-sprite2x)) / 2) auto);
+		}
+	}
 }
