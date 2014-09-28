@@ -1,8 +1,8 @@
-require 'sass-globbing'
+# require 'sass-globbing'
 
 http_path = "/"
-css_dir = "prod"
-sass_dir = "sass"
+css_dir = "css/"
+sass_dir = "sass/"
 
 # http_path = ""
 # http_generated_images_path = ""
