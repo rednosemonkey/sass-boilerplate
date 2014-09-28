@@ -13,10 +13,22 @@ module.exports = function(grunt) {
 				 sassDir: 'sass/',
 				 cssDir: 'dev/',
 				 environment: 'development'
-				 // outputStyle: 'expanded' //set in compass config
+				 outputStyle: 'expanded'
 			 }
 		 } 
 	 },
+
+	// If prefer to not use compass
+	// sass: {
+		// 	build: {
+		// 		options: {
+		// 			style: 'expanded'
+		// 		},
+		// 		files: {
+		// 			'dev/*.css': 'sass/*.scss'
+		// 		}
+		// 	}
+	// },
 
 	 autoprefixer: {
 			options: {
